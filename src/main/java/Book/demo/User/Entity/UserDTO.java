@@ -1,6 +1,6 @@
-package Book.demo.User;
+package Book.demo.User.Entity;
 
-import Book.demo.Books.BooksModel;
+import Book.demo.Books.Entity.BooksModel;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -21,4 +21,6 @@ public class UserDTO {
     private String userGmail;
 
     private List<BooksModel> booksModels;
+
+    private String userPassword;
 }

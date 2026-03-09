@@ -1,5 +1,7 @@
-package Book.demo.Books;
+package Book.demo.Books.Mapper;
 
+import Book.demo.Books.Entity.BooksDTO;
+import Book.demo.Books.Entity.BooksModel;
 import org.mapstruct.BeanMapping;
 import org.mapstruct.Mapper;
 import org.mapstruct.MappingTarget;

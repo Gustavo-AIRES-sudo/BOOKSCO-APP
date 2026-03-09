@@ -1,8 +1,13 @@
-package Book.demo.User;
+package Book.demo.User.Service;
 
-import jakarta.transaction.Transactional;
+import Book.demo.User.Entity.UserDTO;
+import Book.demo.User.Entity.UserModel;
+import Book.demo.User.Mapper.UserMapper;
+import Book.demo.User.Repository.UserRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
@@ -11,18 +16,17 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
+@RequiredArgsConstructor
 public class UserService {
 
     @Autowired
     private final UserRepository userRepository;
 
     @Autowired
-    private final UserMapper userMapper;
+    private final PasswordEncoder passwordEncoder;
 
-    public UserService(UserRepository userRepository, UserMapper userMapper) {
-        this.userRepository = userRepository;
-        this.userMapper = userMapper;
-    }
+    @Autowired
+    private final UserMapper userMapper;
 
     public List<UserDTO> getAllUsers(){
         List<UserModel> allUsers = userRepository.findAll();
@@ -60,9 +64,13 @@ public class UserService {
 
     public UserDTO addUser(UserDTO userDTO){
         UserModel newUser = userMapper.map(userDTO);
+
+        String password = passwordEncoder.encode(newUser.getUserPassword());
+        newUser.setUserPassword(password);
+
         newUser = userRepository.save(newUser);
+
         return userMapper.map(newUser);
     }
-
 
 }

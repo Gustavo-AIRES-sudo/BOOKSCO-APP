@@ -1,6 +1,6 @@
-package Book.demo.Books;
+package Book.demo.Books.Entity;
 
-import Book.demo.User.UserModel;
+import Book.demo.User.Entity.UserModel;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

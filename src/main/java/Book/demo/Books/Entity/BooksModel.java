@@ -1,6 +1,6 @@
-package Book.demo.Books;
+package Book.demo.Books.Entity;
 
-import Book.demo.User.UserModel;
+import Book.demo.User.Entity.UserModel;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
